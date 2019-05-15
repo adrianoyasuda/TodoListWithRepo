@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name" translatable="false">ToDoList</string>
+    <string name="action_settings">Settings</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="share_message">Wow! I\'ve just finished:</string>
+</resources>

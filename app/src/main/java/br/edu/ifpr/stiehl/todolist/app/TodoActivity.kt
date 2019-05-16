@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import br.edu.ifpr.stiehl.aula7_sqlite.ui.TaskAdapterListener
+import br.edu.ifpr.stiehl.todolist.ui.TaskAdapterListener
 import br.edu.ifpr.stiehl.todolist.R
 import br.edu.ifpr.stiehl.todolist.datasource.TaskRepository
 import br.edu.ifpr.stiehl.todolist.entities.Task
@@ -75,11 +75,11 @@ class TodoActivity : AppCompatActivity(), TaskAdapterListener {
     }
 
     override fun taskSaved(task: Task) {
-        if (task.id == 0L)
+        if (task.localId == 0L)
             taskRepository
                 .insert(task)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { id -> task.id = id }
+                .subscribe()
                 .addTo(disposables)
         else
             taskRepository
@@ -92,7 +92,6 @@ class TodoActivity : AppCompatActivity(), TaskAdapterListener {
     override fun taskRemoved(task: Task) {
         taskRepository
             .remove(task)
-            .observeOn(AndroidSchedulers.mainThread())
             .subscribe()
             .addTo(disposables)
     }

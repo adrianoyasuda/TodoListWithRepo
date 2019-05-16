@@ -1,4 +1,4 @@
-package br.edu.ifpr.stiehl.aula7_sqlite.ui
+package br.edu.ifpr.stiehl.todolist.ui
 
 import br.edu.ifpr.stiehl.todolist.entities.Task
 

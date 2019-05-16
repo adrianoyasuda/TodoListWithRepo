@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.edu.ifpr.stiehl.aula7_sqlite.ui.TaskAdapterListener
 import br.edu.ifpr.stiehl.todolist.R
 import br.edu.ifpr.stiehl.todolist.entities.Task
 import kotlinx.android.synthetic.main.item_task_edit.view.*

@@ -13,9 +13,15 @@ interface TaskDao {
     @Insert
     fun insert(task: Task): Single<Long>
 
+    @Insert
+    fun insertAll(tasks: List<Task>): Completable
+
     @Update
     fun update(task: Task): Completable
 
     @Delete
     fun remove(task: Task): Completable
+
+    @Query("DELETE FROM tasks")
+    fun removeAll(): Completable
 }

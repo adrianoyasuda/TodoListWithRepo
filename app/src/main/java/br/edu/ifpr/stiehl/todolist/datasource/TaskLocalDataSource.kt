@@ -6,10 +6,10 @@ import br.edu.ifpr.stiehl.todolist.db.AppDatabase
 import br.edu.ifpr.stiehl.todolist.db.dao.TaskDao
 import br.edu.ifpr.stiehl.todolist.entities.Task
 import io.reactivex.Completable
-import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
 
 class TaskLocalDataSource : TaskDataSource {
+
+
     var taskDao: TaskDao
 
     init {
@@ -24,23 +24,10 @@ class TaskLocalDataSource : TaskDataSource {
         taskDao = db.taskDao()
     }
 
-    override fun getAll(): Single<List<Task>> {
-        return taskDao.getAll()
-            .subscribeOn(Schedulers.io())
-    }
-
-    override fun insert(task: Task): Single<Long> {
-        return taskDao.insert(task)
-            .subscribeOn(Schedulers.io())
-    }
-
-    override fun update(task: Task): Completable {
-        return taskDao.update(task)
-            .subscribeOn(Schedulers.io())
-    }
-
-    override fun remove(task: Task): Completable {
-        return taskDao.remove(task)
-            .subscribeOn(Schedulers.io())
-    }
+    override fun getAll() = taskDao.getAll()
+    override fun insert(task: Task) = taskDao.insert(task)
+    override fun update(task: Task) = taskDao.update(task)
+    override fun remove(task: Task) = taskDao.remove(task)
+    override fun insertAll(tasks: List<Task>) = taskDao.insertAll(tasks)
+    override fun removeAll() = taskDao.removeAll()
 }
